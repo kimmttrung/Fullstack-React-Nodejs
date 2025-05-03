@@ -15,10 +15,12 @@ app.use(express.urlencoded({ extended: true })) // for form data
 //config template engine
 configViewEngine(app);
 
-//khai báo route
-app.use('/v1/api/', apiRoutes);
-app.use('/', getHomepage);
+const webAPI = express.Router();
+webAPI.get('/', getHomepage);
 
+//khai báo route
+app.use('/', webAPI);
+app.use('/v1/api/', apiRoutes);
 
 (async () => {
     try {
