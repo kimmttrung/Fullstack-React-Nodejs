@@ -1,10 +1,11 @@
-# Ignore Node modules or build folders at root (nếu có)
-node_modules/
+# Env files in frontend and backend
+00-react-javascript/.env
+00-react-javascript/.env.*
+01-nodejs-javascript/.env
+01-nodejs-javascript/.env.*
+
+# Optional: ignore node_modules, build folders
+00-react-javascript/node_modules/
+01-nodejs-javascript/node_modules/
+build/
 dist/
-
-# Ignore env files nếu có ngoài root
-.env
-.env.development
-
-# Ignore log files
-*.log
