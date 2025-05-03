@@ -1,0 +1,10 @@
+# Ignore Node modules or build folders at root (nếu có)
+node_modules/
+dist/
+
+# Ignore env files nếu có ngoài root
+.env
+.env.development
+
+# Ignore log files
+*.log
