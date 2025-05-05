@@ -17,7 +17,7 @@ const RegisterPage = () => {
             navigate('/login');
         } else {
             notification.error({
-                message: "ERROR CREATE USER",
+                message: "CREATE NEW USER",
                 description: "Error"
             })
         }
