@@ -8,6 +8,13 @@ const saltRounds = 10;
 
 const createUserService = async (name, email, password) => {
     try {
+        // check user exits
+        const user = await User.findOne({ email })
+        if (user) {
+            console.log(`>>> user exits, chọn 1 email khác: ${email}`);
+            return null;
+        }
+
         // hash user password
         const hashPassword = await bcrypt.hash(password, saltRounds);
 
@@ -26,6 +33,7 @@ const createUserService = async (name, email, password) => {
         return null;
     }
 }
+
 const handleLoginService = async (email1, password) => {
     try {
         // fetch user by email
@@ -87,11 +95,23 @@ const handleLoginService = async (email1, password) => {
     }
 }
 
+const getUserService = async () => {
+    try {
+
+        // save user to database
+        let result = await User.find({})
+        return result;
+
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
 
 
 
 
 module.exports = {
-    createUserService,
-    handleLoginService
+    createUserService, handleLoginService, getUserService
 }
