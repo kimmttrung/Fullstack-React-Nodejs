@@ -67,7 +67,6 @@ const handleLoginService = async (email1, password) => {
                         name: user.name
                     }
                 };
-
             }
         } else {
             return {
@@ -75,19 +74,6 @@ const handleLoginService = async (email1, password) => {
                 EM: "Email password không hợp lệ"
             }
         }
-
-
-        const hashPassword = await bcrypt.hash(password, saltRounds);
-
-        // save user to database
-        let result = await User.create({
-            name: name,
-            email: email,
-            password: hashPassword,
-            role: "USER"
-
-        })
-        return result;
 
     } catch (error) {
         console.log(error);
@@ -99,7 +85,7 @@ const getUserService = async () => {
     try {
 
         // save user to database
-        let result = await User.find({})
+        let result = await User.find({}).select('-password')
         return result;
 
     } catch (error) {
