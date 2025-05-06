@@ -6,7 +6,7 @@ const delay = (req, res, next) => {
             // console.log("Access_token", token);
         }
         next();
-    }, 2000)
+    }, 3000)
 }
 
 module.exports = delay;
